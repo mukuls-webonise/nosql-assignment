@@ -1,0 +1,46 @@
+db.users.insert(
+{
+username: "shirishp",
+"name" : "Shirish Parsekar",
+"email" : "deep.sodhi@weboniselab.com",
+"password" : "abcde",
+"bio" : "Blah Blah",
+"teams" : []
+
+});
+
+db.posts.insert({
+	"user_id" : "shirishp",
+	"heading" : "My hometown",
+	"tags" : [
+		"goa",
+		"hometown"
+	],
+	"images" : [
+		{"src" : "http://bit.ly/2aWpkAA", "alt": "Image"}
+	],
+	"body" : "<html> <head>My hometown</head> <body> <p>This is my place</p> </body> </html>",
+  "comments" : [
+  {
+    "_id" : ObjectId("57c0445026aa9dce3b9d0982"), 
+    "comment" : "Love goa",
+    "user_name" : "mukul"
+  },
+  {
+  "parent" : ObjectId("57c0445026aa9dce3b9d0982"),
+	"comment" : "Me too",
+	"user_name" : "deeps"
+  }
+  ]
+});
+
+db.posts.update( {"user_id":"shirishp", "comments.comment" : "Yayyyyyy"}, { $set : { "comments.$.comment" : "Be Serious Bro!" }} );
+
+db.posts.update(
+{"user_id":"shirishp", "comments.comment" : "Yayyyyyy"},
+{ $set : { "comments.$.comment" : "Be Serious Bro!" }}
+);
+
+db.posts.update({"user_id":"shirishp"}, 
+{$pull: {"comments" : {"comment" : "Then let's go"}}});
+
