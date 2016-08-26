@@ -44,3 +44,10 @@ db.posts.update(
 db.posts.update({"user_id":"shirishp"}, 
 {$pull: {"comments" : {"comment" : "Then let's go"}}});
 
+db.posts.aggregate(
+    { $project: { comments: 1 }},
+    { $unwind: "$comments" },
+    { $group: { _id: "comments_count", count: { $sum: 1 }}}
+);
+
+db.posts.find({"comments.3" :  {$exists : true} });
