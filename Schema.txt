@@ -1,0 +1,31 @@
+NoSQL Assignment 
+
+Users
+
+{ 
+  username: “username”, 
+  name: “Full name here”, 
+  email : “​ email_here@example.com​ ”, 
+  password: “store pass hash here”, 
+  bio : “user self info”, 
+  teams : [ { users: [], role: “admin, super or editor” }, ... ]
+}
+
+Posts 
+
+{
+  user_id : username,
+  heading: “heading goes here”, 
+  body: “body goes here”, 
+  tags: [“technology”, mongoDB”, ...], 
+  images: [ {url : “image url”, alt: “image description”}, ... ], 
+  updated_at: date_time, 
+  comments: [
+    {
+        comment: “comment goes here”, 
+        reference_to: comment_ref_if_present, 
+        user_id: username, 
+        updated_at: date_time
+    }
+  ] 
+}
